@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>SEMINAR — Presenter View</title>
+<style>
+  :root {
+    --bg-main: #13171e;
+    --bg-panel: #1b212c;
+    --accent-yellow: #f5cf65;
+    --text-main: #e2e8f0;
+    --text-muted: #94a3b8;
+    --btn-bg: #2a313c;
+    --btn-hover: #3a414c;
+    --border-panel: rgba(255, 255, 255, 0.08);
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; height: 100%;
+    background: var(--bg-main); color: var(--text-main);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  #app { display: flex; flex-direction: column; height: 100%; padding: 12px; gap: 8px; }
+  .pv-header { display: flex; align-items: center; justify-content: space-between; font-size: 0.8rem; }
+  #pvTitle { font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  #pvCounter { color: var(--text-muted); flex-shrink: 0; margin-left: 8px; }
+  #pvNotes {
+    flex: 1; overflow-y: auto;
+    background: var(--bg-panel); border: 1px solid var(--border-panel); border-radius: 8px;
+    padding: 10px; font-size: 0.82rem; line-height: 1.5; white-space: pre-wrap;
+  }
+  #pvTime { font-size: 0.7rem; color: var(--text-muted); text-align: center; }
+  .pv-controls { display: flex; gap: 6px; }
+  .pv-controls button {
+    flex: 1; padding: 8px 0; border-radius: 6px; border: 1px solid var(--border-panel);
+    background: var(--btn-bg); color: var(--text-main); font-size: 0.9rem; cursor: pointer;
+  }
+  .pv-controls button:hover { background: var(--btn-hover); }
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="pv-header">
+    <span id="pvTitle">Waiting for presentation…</span>
+    <span id="pvCounter">0 / 0</span>
+  </div>
+  <div id="pvNotes"></div>
+  <div id="pvTime">0:00 / 0:00</div>
+  <div class="pv-controls">
+    <button id="pvPrev" title="Previous slide">⏮</button>
+    <button id="pvPlay" title="Play">▶</button>
+    <button id="pvPause" title="Pause">⏸</button>
+    <button id="pvNext" title="Next slide">⏭</button>
+  </div>
+</div>
+<script type="module" src="ui/presenter-view.js"></script>
+</body>
+</html>

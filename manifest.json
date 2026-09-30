@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Seminar_Neural",
+  "version": "0.1.0",
+  "description": "Turn highlighted math into an editable AI-planned seminar with slides, diagrams, and live narration.",
+  "action": {
+    "default_title": "Open Seminar"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "sidePanel",
+    "contextMenus",
+    "storage",
+    "activeTab",
+    "windows"
+  ],
+  "web_accessible_resources": [{
+    "resources": ["vendor/Kalam-Regular.ttf"],
+    "matches": ["<all_urls>"]
+  }]
+}

@@ -1,0 +1,219 @@
+{
+  "generatedAt": "2026-09-01T06:15:09.735Z",
+  "methodology": {
+    "note": "Compares our production stroke geometry (handwriting-agent-transcripts.js, resampled through the exact Catmull-Rom spline handwriting-agent.js uses — see glyph-geometry.mjs) against real human ink from Google's public MathWriting dataset excerpt (mathwriting-2024-excerpt, 1.5MB sample, NOT the full 2.9GB dataset). Both are normalized to a unit-square, fixed-point-count representation before DTW (dtw.mjs) so raw scale/device/point-density differences don't bias the comparison. No baseline generative model is compared (no public \"Ink-Transformer\" checkpoint could be found — see ../README.md); instead, human-vs-human DTW variability (computed wherever 2+ human samples of a glyph exist) serves as the reference point for whether our ink's distance from human ink is within normal handwriting variation.",
+    "sampleSizeCaveat": "Only the MathWriting EXCERPT was used (100 single-symbol inks total, of which 29 overlap with our TRANSCRIPTS bank) — the full dataset (2.9GB) would give more samples per glyph and broader character coverage.",
+    "metric": "DTW distance between two unit-square-normalized, 64-point-resampled 2D ink paths. ratioToHumanVariability = (avg DTW: ours vs. human samples) / (avg DTW: human vs. human samples) for glyphs with 2+ human samples — >1 means further from human ink than humans are from each other."
+  },
+  "summary": {
+    "glyphsCompared": 29,
+    "glyphsWithHumanVariabilityBaseline": 10,
+    "avgOursVsHumanDtw": 13.176799208155957,
+    "avgRatioToHumanVariability": 1.3401219279540202
+  },
+  "results": [
+    {
+      "label": "?",
+      "humanSampleCount": 1,
+      "oursVsHumanDtw": 5.437557638111598,
+      "humanVsHumanDtw": null,
+      "ratioToHumanVariability": null
+    },
+    {
+      "label": "(",
+      "humanSampleCount": 1,
+      "oursVsHumanDtw": 7.6349276416425615,
+      "humanVsHumanDtw": null,
+      "ratioToHumanVariability": null
+    },
+    {
+      "label": ")",
+      "humanSampleCount": 1,
+      "oursVsHumanDtw": 3.086656334072919,
+      "humanVsHumanDtw": null,
+      "ratioToHumanVariability": null
+    },
+    {
+      "label": ">",
+      "humanSampleCount": 2,
+      "oursVsHumanDtw": 8.924189374858463,
+      "humanVsHumanDtw": 8.108424103606609,
+      "ratioToHumanVariability": 1.1006071291817363
+    },
+    {
+      "label": "0",
+      "humanSampleCount": 1,
+      "oursVsHumanDtw": 8.091705524600975,
+      "humanVsHumanDtw": null,
+      "ratioToHumanVariability": null
+    },
+    {
+      "label": "2",
+      "humanSampleCount": 1,
+      "oursVsHumanDtw": 6.53119604260507,
+      "humanVsHumanDtw": null,
+      "ratioToHumanVariability": null
+    },
+    {
+      "label": "3",
+      "humanSampleCount": 1,
+      "oursVsHumanDtw": 3.5112588743201765,
+      "humanVsHumanDtw": null,
+      "ratioToHumanVariability": null
+    },
+    {
+      "label": "9",
+      "humanSampleCount": 1,
+      "oursVsHumanDtw": 5.600418668392793,
+      "humanVsHumanDtw": null,
+      "ratioToHumanVariability": null
+    },
+    {
+      "label": "a",
+      "humanSampleCount": 1,
+      "oursVsHumanDtw": 9.731603445674178,
+      "humanVsHumanDtw": null,
+      "ratioToHumanVariability": null
+    },
+    {
+      "label": "B",
+      "humanSampleCount": 1,
+      "oursVsHumanDtw": 14.92479263743455,
+      "humanVsHumanDtw": null,
+      "ratioToHumanVariability": null
+    },
+    {
+      "label": "c",
+      "humanSampleCount": 2,
+      "oursVsHumanDtw": 7.676593032558877,
+      "humanVsHumanDtw": 4.158361534805615,
+      "ratioToHumanVariability": 1.8460619569283612
+    },
+    {
+      "label": "d",
+      "humanSampleCount": 1,
+      "oursVsHumanDtw": 25.501948730388577,
+      "humanVsHumanDtw": null,
+      "ratioToHumanVariability": null
+    },
+    {
+      "label": "D",
+      "humanSampleCount": 1,
+      "oursVsHumanDtw": 12.604648839596898,
+      "humanVsHumanDtw": null,
+      "ratioToHumanVariability": null
+    },
+    {
+      "label": "e",
+      "humanSampleCount": 2,
+      "oursVsHumanDtw": 5.695581206737799,
+      "humanVsHumanDtw": 7.336370872056986,
+      "ratioToHumanVariability": 0.7763485933394287
+    },
+    {
+      "label": "E",
+      "humanSampleCount": 2,
+      "oursVsHumanDtw": 16.29346242190202,
+      "humanVsHumanDtw": 23.395231959581942,
+      "ratioToHumanVariability": 0.6964437219537265
+    },
+    {
+      "label": "F",
+      "humanSampleCount": 1,
+      "oursVsHumanDtw": 12.28374443923048,
+      "humanVsHumanDtw": null,
+      "ratioToHumanVariability": null
+    },
+    {
+      "label": "g",
+      "humanSampleCount": 2,
+      "oursVsHumanDtw": 11.467168015868715,
+      "humanVsHumanDtw": 10.683198192130314,
+      "ratioToHumanVariability": 1.0733834390824937
+    },
+    {
+      "label": "i",
+      "humanSampleCount": 1,
+      "oursVsHumanDtw": 32.776637386402456,
+      "humanVsHumanDtw": null,
+      "ratioToHumanVariability": null
+    },
+    {
+      "label": "I",
+      "humanSampleCount": 1,
+      "oursVsHumanDtw": 29.534947787688974,
+      "humanVsHumanDtw": null,
+      "ratioToHumanVariability": null
+    },
+    {
+      "label": "L",
+      "humanSampleCount": 2,
+      "oursVsHumanDtw": 6.641890959190131,
+      "humanVsHumanDtw": 9.570872006136037,
+      "ratioToHumanVariability": 0.6939692595337091
+    },
+    {
+      "label": "m",
+      "humanSampleCount": 1,
+      "oursVsHumanDtw": 15.893841901713868,
+      "humanVsHumanDtw": null,
+      "ratioToHumanVariability": null
+    },
+    {
+      "label": "O",
+      "humanSampleCount": 1,
+      "oursVsHumanDtw": 12.031643916303292,
+      "humanVsHumanDtw": null,
+      "ratioToHumanVariability": null
+    },
+    {
+      "label": "p",
+      "humanSampleCount": 2,
+      "oursVsHumanDtw": 13.579885550341546,
+      "humanVsHumanDtw": 20.412333961714307,
+      "ratioToHumanVariability": 0.6652784329225747
+    },
+    {
+      "label": "r",
+      "humanSampleCount": 2,
+      "oursVsHumanDtw": 33.545205874436704,
+      "humanVsHumanDtw": 6.2019639846010985,
+      "ratioToHumanVariability": 5.4088037205192325
+    },
+    {
+      "label": "S",
+      "humanSampleCount": 2,
+      "oursVsHumanDtw": 4.64202262828155,
+      "humanVsHumanDtw": 7.819514181960015,
+      "ratioToHumanVariability": 0.5936459120428368
+    },
+    {
+      "label": "t",
+      "humanSampleCount": 1,
+      "oursVsHumanDtw": 22.820849610233722,
+      "humanVsHumanDtw": null,
+      "ratioToHumanVariability": null
+    },
+    {
+      "label": "W",
+      "humanSampleCount": 1,
+      "oursVsHumanDtw": 16.155860704147518,
+      "humanVsHumanDtw": null,
+      "ratioToHumanVariability": null
+    },
+    {
+      "label": "Y",
+      "humanSampleCount": 2,
+      "oursVsHumanDtw": 14.598207851155195,
+      "humanVsHumanDtw": 26.70352841986933,
+      "ratioToHumanVariability": 0.546677114036102
+    },
+    {
+      "label": "Z",
+      "humanSampleCount": 1,
+      "oursVsHumanDtw": 14.908729998631177,
+      "humanVsHumanDtw": null,
+      "ratioToHumanVariability": null
+    }
+  ]
+}

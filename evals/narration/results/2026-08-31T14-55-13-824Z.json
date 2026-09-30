@@ -1,0 +1,301 @@
+{
+  "generatedAt": "2026-08-31T14:55:13.824Z",
+  "methodology": {
+    "note": "This is NOT the paper's (paper/SEMINAR.tex, \"Narration and Synchronization\") full proposed benchmark. It covers: (1) deterministic structural invariant checks, and (2) an LLM-judge rubric that PROXIES for MOS naturalness and notation/phonetic accuracy. It does not include real human MOS ratings, real ASR-based WER, or a comparison against the MathReader/Polly baselines the paper names — those require synthesized audio for all three systems plus an ASR pass and are not implemented here.",
+    "judgeModel": "gemini-3.1-flash-lite (lib/llm-client.js DEFAULT_GEMINI_MODEL)",
+    "scoreScale": "1-5, 5 = best, for faithfulness/naturalness/notation_accuracy"
+  },
+  "summary": {
+    "totalSlides": 8,
+    "erroredSlides": 0,
+    "structuralPassRate": 1,
+    "avgFaithfulness": 4.125,
+    "avgNaturalness": 4.25,
+    "avgNotationAccuracy": 4.625
+  },
+  "results": [
+    {
+      "slideId": "test-prose-inner-product",
+      "title": "Inner product of two vectors",
+      "spokenText": "Consider a vector a in n-dimensional real space and another vector b in n-dimensional real space. Their inner product is defined as gamma, equal to a transpose b.",
+      "segments": [
+        {
+          "fragments": [
+            {
+              "spoken": "Consider a vector a in n-dimensional real space",
+              "boardText": "Consider a vector $a$ in $\\mathbb{R}^n$ "
+            },
+            {
+              "spoken": "and another vector b in n-dimensional real space.",
+              "boardText": "and another vector $b$ in $\\mathbb{R}^n$. "
+            },
+            {
+              "spoken": "Their inner product is defined as gamma, equal to a transpose b.",
+              "boardText": "Their inner product is defined as $\\gamma = a^T b$."
+            }
+          ]
+        }
+      ],
+      "structural": {
+        "pass": true,
+        "issues": []
+      },
+      "judge": {
+        "faithfulness": 5,
+        "naturalness": 5,
+        "notation_accuracy": 5,
+        "issues": []
+      }
+    },
+    {
+      "slideId": "test-equation-transpose-perp",
+      "title": "Orthogonality condition",
+      "spokenText": "The vector a transpose, multiplied by a sub perpendicular, equals zero.",
+      "segments": [
+        {
+          "fragments": [
+            {
+              "spoken": "The vector a transpose,",
+              "boardText": "a^T "
+            },
+            {
+              "spoken": "multiplied by a sub perpendicular, equals zero.",
+              "boardText": "a_\\perp = 0"
+            }
+          ]
+        }
+      ],
+      "structural": {
+        "pass": true,
+        "issues": []
+      },
+      "judge": {
+        "faithfulness": 5,
+        "naturalness": 3,
+        "notation_accuracy": 3,
+        "issues": [
+          "The narration includes verbal filler ('The vector') which is not on the board.",
+          "Reading 'a^T' as 'a transpose' is correct, but 'multiplied by' is an unnecessary addition for juxtaposition.",
+          "The reading of 'a_perp' is slightly unnatural; it is standard to read it as 'a perp' rather than 'a sub perpendicular'."
+        ]
+      }
+    },
+    {
+      "slideId": "test-bullet-axioms",
+      "title": "Axioms of probability",
+      "spokenText": "Now, consider an experiment with a sample space S. For each event E, a subset of S, we define a function P of E satisfying the following axioms,\n\nThe probability of E is between zero and one, inclusive, right?\n\nAnd the probability of the entire sample space S is equal to one.",
+      "segments": [
+        {
+          "fragments": [
+            {
+              "spoken": "Now, consider an experiment with a sample space S.",
+              "boardText": "Consider an experiment with sample space $S$. "
+            },
+            {
+              "spoken": "For each event E, a subset of S,",
+              "boardText": "For each event $E \\subseteq S$, "
+            },
+            {
+              "spoken": "we define a function P of E satisfying the following axioms,",
+              "boardText": "we define a function $P(E)$ satisfying the following axioms:"
+            }
+          ]
+        },
+        {
+          "fragments": [
+            {
+              "spoken": "The probability of E is between zero and one, inclusive, right?",
+              "boardText": "$0 \\le P(E) \\le 1$"
+            }
+          ]
+        },
+        {
+          "fragments": [
+            {
+              "spoken": "And the probability of the entire sample space S is equal to one.",
+              "boardText": "$P(S) = 1$"
+            }
+          ]
+        }
+      ],
+      "structural": {
+        "pass": true,
+        "issues": []
+      },
+      "judge": {
+        "faithfulness": 2,
+        "naturalness": 3,
+        "notation_accuracy": 4,
+        "issues": [
+          "Added 'Now' which was not on the board.",
+          "Added conversational filler 'right?' which was not on the board.",
+          "Added commentary 'The probability of' which was not explicitly stated in the text for the axioms.",
+          "Rephrased '0 <= P(E) <= 1' as a natural language sentence rather than reading the mathematical statement."
+        ]
+      }
+    },
+    {
+      "slideId": "test-multirow-derivation",
+      "title": "Expanding a quadratic form",
+      "spokenText": "Finally, the square of the sum of a and b is equal to the product of a plus b with itself, which expands to a squared plus two a b plus b squared.",
+      "segments": [
+        {
+          "fragments": [
+            {
+              "spoken": "Finally, the square of the sum of a and b is equal to the product of a plus b with itself, which expands to a squared plus two a b plus b squared.",
+              "boardText": "(a+b)^2 &= (a+b)(a+b) \\ &= a^2 + 2ab + b^2"
+            }
+          ]
+        }
+      ],
+      "structural": {
+        "pass": true,
+        "issues": []
+      },
+      "judge": {
+        "faithfulness": 4,
+        "naturalness": 5,
+        "notation_accuracy": 5,
+        "issues": [
+          "The narrator added the word 'Finally' which was not on the board.",
+          "The narrator interpreted the line breaks and equality signs with conversational fillers rather than reading them literally, though this is natural."
+        ]
+      }
+    },
+    {
+      "slideId": "test-set-builder-braces",
+      "title": "Set-builder probability notation",
+      "spokenText": "The probability mass function satisfies the probability that X equals x, is equal to one over n, for each x in the sample space, right?",
+      "segments": [
+        {
+          "fragments": [
+            {
+              "spoken": "The probability mass function satisfies",
+              "boardText": "The probability mass function satisfies "
+            },
+            {
+              "spoken": "the probability that X equals x,",
+              "boardText": "$P\\{X = x\\} = "
+            },
+            {
+              "spoken": "is equal to one over n,",
+              "boardText": "\\frac{1}{n} "
+            },
+            {
+              "spoken": "for each x in the sample space, right?",
+              "boardText": "for each $x$ in the sample space."
+            }
+          ]
+        }
+      ],
+      "structural": {
+        "pass": true,
+        "issues": []
+      },
+      "judge": {
+        "faithfulness": 4,
+        "naturalness": 4,
+        "notation_accuracy": 5,
+        "issues": [
+          "The narrator added the word 'right' at the end, which is not present in the board content and constitutes a conversational filler that violates the faithfulness criteria."
+        ]
+      }
+    },
+    {
+      "slideId": "test-named-group-abbreviation",
+      "title": "The special orthogonal group",
+      "spokenText": "Let S O of d denote the special orthogonal group in dimension d. Every element of this group can be written as a product of rotations, right?",
+      "segments": [
+        {
+          "fragments": [
+            {
+              "spoken": "Let S O of d denote the special orthogonal group in dimension d.",
+              "boardText": "Let $SO(d)$ denote the special orthogonal group in dimension $d$. "
+            },
+            {
+              "spoken": "Every element of this group can be written as a product of rotations, right?",
+              "boardText": "Every element of $SO(d)$ can be written as a product of rotations."
+            }
+          ]
+        }
+      ],
+      "structural": {
+        "pass": true,
+        "issues": []
+      },
+      "judge": {
+        "faithfulness": 4,
+        "naturalness": 4,
+        "notation_accuracy": 5,
+        "issues": [
+          "The narrator added 'right?' at the end, which was not on the board content.",
+          "The narrator changed 'Every element of SO(d)' to 'Every element of this group'."
+        ]
+      }
+    },
+    {
+      "slideId": "test-norm-nabla-calligraphic",
+      "title": "Gradient norm bound",
+      "spokenText": "The squared norm of the gradient of f at x, is less than or equal to L times the quantity, f of x minus f star.",
+      "segments": [
+        {
+          "fragments": [
+            {
+              "spoken": "The squared norm of the gradient of f at x,",
+              "boardText": "\\|\\nabla f(x)\\|^2 "
+            },
+            {
+              "spoken": "is less than or equal to L times the quantity,",
+              "boardText": "\\le L \\cdot ("
+            },
+            {
+              "spoken": "f of x minus f star.",
+              "boardText": "f(x) - f^*)"
+            }
+          ]
+        }
+      ],
+      "structural": {
+        "pass": true,
+        "issues": []
+      },
+      "judge": {
+        "faithfulness": 5,
+        "naturalness": 5,
+        "notation_accuracy": 5,
+        "issues": []
+      }
+    },
+    {
+      "slideId": "test-diagram-caption",
+      "title": "Contracting disk",
+      "spokenText": "Consider a disk with a smaller subdisk removed, the subdisk shrinking continuously to a single point.",
+      "segments": [
+        {
+          "fragments": [
+            {
+              "spoken": "Consider a disk with a smaller subdisk removed,",
+              "boardText": "a disk with a smaller subdisk removed, "
+            },
+            {
+              "spoken": "the subdisk shrinking continuously to a single point.",
+              "boardText": "the subdisk shrinking continuously to a single point"
+            }
+          ]
+        }
+      ],
+      "structural": {
+        "pass": true,
+        "issues": []
+      },
+      "judge": {
+        "faithfulness": 4,
+        "naturalness": 5,
+        "notation_accuracy": 5,
+        "issues": [
+          "The narrator added the word 'Consider' which was not present in the board content."
+        ]
+      }
+    }
+  ]
+}

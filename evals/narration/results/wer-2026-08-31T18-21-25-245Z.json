@@ -1,0 +1,103 @@
+{
+  "generatedAt": "2026-08-31T18:21:25.245Z",
+  "methodology": {
+    "note": "Real TTS+ASR round-trip WER for our own narration pipeline only. Polly baseline: not run (no published number exists to cite either — see ../README.md; the user chose to drop this arm rather than fabricate a placeholder). MathReader comparison below is the PUBLISHED number from their paper, not a local reproduction on this eval's inputs — no trained checkpoint is publicly available (confirmed via github.com/hyeonsieun/MathReader), and their pipeline (fine-tuned T5 + NVIDIA NeMo/VITS) would need GPU training infrastructure not available here. Treat the comparison as directional, not a controlled same-corpus benchmark.",
+    "ourPipeline": "agents/narrator-agent.js narrationText -> Gemini TTS (gemini-3.1-flash-tts-preview) -> Gemini transcription (gemini-3.1-flash-lite) -> word-level WER vs. the original narrationText",
+    "werFormula": "(substitutions + deletions + insertions) / reference word count, case/punctuation-insensitive"
+  },
+  "mathReaderPublished": {
+    "source": "arxiv.org/abs/2501.07088, Table 2",
+    "mathReaderWer": 0.281,
+    "microsoftEdgeWer": 0.51,
+    "adobeAcrobatWer": 0.617
+  },
+  "summary": {
+    "slidesEvaluated": 8,
+    "slidesErrored": 0,
+    "slidesSkipped": 0,
+    "microAvgWer": 0.11711711711711711,
+    "macroAvgWer": 0.13124600893997446
+  },
+  "results": [
+    {
+      "slideId": "test-prose-inner-product",
+      "title": "Inner product of two vectors",
+      "reference": "Consider a vector a in n-dimensional real space and another vector b in n-dimensional real space. Their inner product is defined as gamma, equal to a transpose b.",
+      "hypothesis": "Consider a vector A in N-dimensional real space and another vector B in N-dimensional real space. Their inner product is defined as gamma equal to A transpose B.",
+      "audioPath": "evals/narration/results/audio/test-prose-inner-product.wav",
+      "wer": 0,
+      "editDistance": 0,
+      "referenceWordCount": 28
+    },
+    {
+      "slideId": "test-equation-transpose-perp",
+      "title": "Orthogonality condition",
+      "reference": "The vector a transpose, times a sub perpendicular, is equal to zero,",
+      "hypothesis": "The vector A transpose times A sub perpendicular is equal to 0.",
+      "audioPath": "evals/narration/results/audio/test-equation-transpose-perp.wav",
+      "wer": 0.08333333333333333,
+      "editDistance": 1,
+      "referenceWordCount": 12
+    },
+    {
+      "slideId": "test-bullet-axioms",
+      "title": "Axioms of probability",
+      "reference": "Now, consider an experiment with a sample space S. For each event E, a subset of S, we define a function P of E satisfying the following axioms:\n\nThe probability of any event E is between zero and one, inclusive, right?\n\nFinally, the probability of the entire sample space S must equal one, understood?",
+      "hypothesis": "Now, consider an experiment with a sample space S. For each event E, a subset of S, we define a function P of E, satisfying the following axioms. The probability of any event E is between zero and one, inclusive, right? Finally, the probability of the entire sample space S must equal one. Understood?",
+      "audioPath": "evals/narration/results/audio/test-bullet-axioms.wav",
+      "wer": 0,
+      "editDistance": 0,
+      "referenceWordCount": 54
+    },
+    {
+      "slideId": "test-multirow-derivation",
+      "title": "Expanding a quadratic form",
+      "reference": "The quantity a plus b, squared, is equal to a plus b times a plus b, which equals a squared plus two a b plus b squared.",
+      "hypothesis": "The quantity (a+b)^2 is equal to (a+b) times (a+b), which equals a^2 + 2ab + b^2.",
+      "audioPath": "evals/narration/results/audio/test-multirow-derivation.wav",
+      "wer": 0.7037037037037037,
+      "editDistance": 19,
+      "referenceWordCount": 27
+    },
+    {
+      "slideId": "test-set-builder-braces",
+      "title": "Set-builder probability notation",
+      "reference": "The probability mass function satisfies the probability that X equals x, is equal to one over n, for each x in the sample space, right?",
+      "hypothesis": "The probability mass function satisfies the probability that x equals x is equal to one over n for each x in the sample space, right?",
+      "audioPath": "evals/narration/results/audio/test-set-builder-braces.wav",
+      "wer": 0,
+      "editDistance": 0,
+      "referenceWordCount": 25
+    },
+    {
+      "slideId": "test-named-group-abbreviation",
+      "title": "The special orthogonal group",
+      "reference": "Let S O of d denote the special orthogonal group in dimension d. Every element of S O of d can be written as a product of rotations, right?",
+      "hypothesis": "Let SO of D denote the special orthogonal group in dimension D. Every element of SO of D can be written as a product of rotations, right?",
+      "audioPath": "evals/narration/results/audio/test-named-group-abbreviation.wav",
+      "wer": 0.13793103448275862,
+      "editDistance": 4,
+      "referenceWordCount": 29
+    },
+    {
+      "slideId": "test-norm-nabla-calligraphic",
+      "title": "Gradient norm bound",
+      "reference": "The squared norm of the gradient of f at x is less than or equal to L, times the difference between f of x and the optimal value f star, right?",
+      "hypothesis": "the squared norm of the gradient of f at x is less than or equal to L times the difference between f of x and the optimal value f star, right?",
+      "audioPath": "evals/narration/results/audio/test-norm-nabla-calligraphic.wav",
+      "wer": 0,
+      "editDistance": 0,
+      "referenceWordCount": 31
+    },
+    {
+      "slideId": "test-diagram-caption",
+      "title": "Contracting disk",
+      "reference": "Consider a disk with a smaller subdisk removed, the subdisk shrinking continuously to a single point.",
+      "hypothesis": "Consider a disk with a smaller sub-disk removed, the sub-disk shrinking continuously to a single point.",
+      "audioPath": "evals/narration/results/audio/test-diagram-caption.wav",
+      "wer": 0.125,
+      "editDistance": 2,
+      "referenceWordCount": 16
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Seminar Neural — Microphone Access</title>
+<style>
+  body { font-family: system-ui, -apple-system, sans-serif; background: #1c3b2b; color: #eafff0; margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
+  .card { max-width: 520px; background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 32px; }
+  h1 { font-size: 20px; margin: 0 0 8px; }
+  p { font-size: 14px; line-height: 1.55; color: #cdebd6; margin: 0 0 16px; }
+  button { background: #3a7a52; color: #fff; border: none; padding: 11px 20px; border-radius: 10px; cursor: pointer; font-size: 14px; font-weight: 600; }
+  button:hover { background: #468f60; }
+  #status { font-size: 14px; margin-top: 18px; min-height: 20px; line-height: 1.5; }
+  #status.ok { color: #8ff0ad; }
+  #status.err { color: #ffb0b0; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>🎤 Microphone access</h1>
+    <p>
+      To ask the narrator a question during a seminar, Seminar Neural needs permission to use your
+      microphone. The Chrome side panel can't show this prompt itself, so grant it here once — it
+      then applies to the whole extension, including the side panel.
+    </p>
+    <button id="grantBtn">Allow microphone</button>
+    <div id="status"></div>
+  </div>
+  <script type="module" src="request-microphone.js"></script>
+</body>
+</html>

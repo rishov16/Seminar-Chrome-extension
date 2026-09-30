@@ -1,0 +1,51 @@
+/* Reuses the exact .math-section/.token flex-wrap + opacity/drawn-class
+   shell from renderers/chalkboard/chalkboard.css unchanged — line-wrapping
+   and per-token show/hide are the same mechanism, just fed by
+   handwriting-agent ink (SVG <path> segments toggling their own inline
+   opacity) instead of Kalam-font-outline+STROKE_MAP masks or MathJax's
+   own static glyph paths, so no equivalent of the old
+   ".token mjx-container svg path.revealed" dasharray rule is needed here
+   — an equation that falls back to plain MathJax typesetting (the
+   documented, currently-unreachable "unsupported" punt) shows/hides as a
+   whole token via the same .token.drawn toggle, not per-glyph. */
+
+.math-section {
+    display: flex;
+    flex-wrap: wrap;
+    /* Tokens top-align; agent-chalkboard-renderer.js then gives each inline
+       $math$ token a margin-top that drops its baseline onto the prose
+       baseline of the words beside it (SVG replaced elements don't expose a
+       usable text baseline to flexbox, so a computed offset is more reliable
+       than align-items: baseline here). */
+    align-items: flex-start;
+    align-content: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.token {
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
+    /* inter-word gap — a touch wider than the old 6px, which let some
+       ink-heavy word pairs ("the Brownian", "motion process") visually
+       collide since each word's SVG ink can extend to its own box edge. */
+    margin-right: 11px;
+    display: inline-block;
+}
+
+/* Trailing punctuation (tagged in agent-chalkboard-renderer.js's
+   addProseToken) hugs the preceding token instead of floating a full word
+   gap away from it — cancels the previous token's margin-right. */
+.token.token-punct {
+    margin-left: -11px;
+}
+
+.token.drawn {
+    opacity: 1;
+}
+
+.token svg.hw-agent-word,
+.token svg.hw-math-agent {
+    overflow: visible;
+    vertical-align: baseline;
+}

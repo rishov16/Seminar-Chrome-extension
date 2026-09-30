@@ -1,0 +1,75 @@
+{
+  "generatedAt": "2026-08-31T18:23:00.613Z",
+  "methodology": {
+    "note": "Real TTS+ASR round-trip WER for our own narration pipeline only. Polly baseline: not run (no published number exists to cite either — see ../README.md; the user chose to drop this arm rather than fabricate a placeholder). MathReader comparison below is the PUBLISHED number from their paper, not a local reproduction on this eval's inputs — no trained checkpoint is publicly available (confirmed via github.com/hyeonsieun/MathReader), and their pipeline (fine-tuned T5 + NVIDIA NeMo/VITS) would need GPU training infrastructure not available here. Treat the comparison as directional, not a controlled same-corpus benchmark.",
+    "ourPipeline": "agents/narrator-agent.js narrationText -> Gemini TTS (gemini-3.1-flash-tts-preview) -> Gemini transcription (gemini-3.1-flash-lite) -> word-level WER vs. the original narrationText",
+    "werFormula": "(substitutions + deletions + insertions) / reference word count, case/punctuation-insensitive"
+  },
+  "mathReaderPublished": {
+    "source": "arxiv.org/abs/2501.07088, Table 2",
+    "mathReaderWer": 0.281,
+    "microsoftEdgeWer": 0.51,
+    "adobeAcrobatWer": 0.617
+  },
+  "summary": {
+    "slidesEvaluated": 1,
+    "slidesErrored": 7,
+    "slidesSkipped": 0,
+    "microAvgWer": 0.14285714285714285,
+    "macroAvgWer": 0.14285714285714285
+  },
+  "results": [
+    {
+      "slideId": "test-prose-inner-product",
+      "title": "Inner product of two vectors",
+      "reference": "Consider a vector a in n-dimensional real space, and another vector b in n-dimensional real space. Their inner product is defined as gamma, equal to a transpose b.",
+      "hypothesis": "Consider a vector A in N dimensional real space and another vector B in N dimensional real space. Their inner product is defined as gamma equal to A transpose B.",
+      "audioPath": "evals/narration/results/audio/test-prose-inner-product.wav",
+      "wer": 0.14285714285714285,
+      "editDistance": 4,
+      "referenceWordCount": 28
+    },
+    {
+      "slideId": "test-equation-transpose-perp",
+      "title": "Orthogonality condition",
+      "reference": "The vector a transpose, multiplied by a sub perpendicular, equals zero.",
+      "error": "Error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 10, model: gemini-3.1-flash-tts\nPlease retry in 23.489557396s."
+    },
+    {
+      "slideId": "test-bullet-axioms",
+      "title": "Axioms of probability",
+      "reference": "Now, let us consider an experiment with a sample space S. For each event E, a subset of S, we define a function P of E that satisfies the following axioms, right?\n\nThe probability of any event E must be between zero and one, inclusive, okay?\n\nAnd the probability of the entire sample space S is exactly equal to one.",
+      "error": "Error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 10, model: gemini-3.1-flash-tts\nPlease retry in 18.539597313s."
+    },
+    {
+      "slideId": "test-multirow-derivation",
+      "title": "Expanding a quadratic form",
+      "reference": "The quantity a plus b, squared, is equal to the quantity a plus b times the quantity a plus b, which expands to a squared plus two a b plus b squared.",
+      "error": "Error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 10, model: gemini-3.1-flash-tts\nPlease retry in 15.045338606s."
+    },
+    {
+      "slideId": "test-set-builder-braces",
+      "title": "Set-builder probability notation",
+      "reference": "The probability mass function satisfies the probability that X equals x, is equal to one over n, for each x in the sample space.",
+      "error": "Error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 10, model: gemini-3.1-flash-tts\nPlease retry in 11.788793784s."
+    },
+    {
+      "slideId": "test-named-group-abbreviation",
+      "title": "The special orthogonal group",
+      "reference": "Let S O of d denote the special orthogonal group in dimension d, every element of S O of d can be written as a product of rotations, right?",
+      "error": "Error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 10, model: gemini-3.1-flash-tts\nPlease retry in 7.367389383s."
+    },
+    {
+      "slideId": "test-norm-nabla-calligraphic",
+      "title": "Gradient norm bound",
+      "reference": "The squared norm of the gradient of f evaluated at x, is less than or equal to L, times the difference between f of x and the optimal value f star, right?",
+      "error": "Error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 10, model: gemini-3.1-flash-tts\nPlease retry in 3.057074134s."
+    },
+    {
+      "slideId": "test-diagram-caption",
+      "title": "Contracting disk",
+      "reference": "Consider a disk, with a smaller subdisk removed, the subdisk shrinking continuously, down to a single point, right?",
+      "error": "Error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 10, model: gemini-3.1-flash-tts\nPlease retry in 59.443081546s."
+    }
+  ]
+}
