@@ -11,7 +11,9 @@
 [![Chrome Extension](https://img.shields.io/badge/Chrome-Manifest%20V3-4285F4?logo=googlechrome&logoColor=white)](#install)
 [![Powered by Gemini](https://img.shields.io/badge/Powered%20by-Gemini-8E75B2)](https://ai.google.dev/)
 
-<img src="docs/assets/seminar-screenshot.png" alt="SEMINAR: a math PDF on the left, the same theorem hand-written on a chalkboard on the right" width="880">
+<img src="docs/assets/seminar-demo.gif" alt="SEMINAR demo: highlighting a theorem in a PDF, then watching it hand-written on a chalkboard as it is narrated" width="880">
+
+▶️ **[Watch the full demo with narration (2.5 min)](https://www.youtube.com/watch?v=h4DWbmh2Nb0)**
 
 </div>
 
